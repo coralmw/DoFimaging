@@ -24,6 +24,10 @@ def zero():
         step(0, 1)
         time.sleep(0.001)
 
+def mono(array):
+    '''from stackoverflow - CIE? color to mono conversion'''
+    return (0.2125 * array[:,:,0]) + (0.7154 * array[:,:,1]) + (0.0721 * array[:,:,2])
+
 
 if __name__ == '__main__':
     gpio.setmode(gpio.BCM)
@@ -43,9 +47,7 @@ if __name__ == '__main__':
     print('building array')
     output = picamera.array.PiYUVArray(camera)
 
-    def mono(array):
-        '''from stackoverflow - CIE? color to mono conversion'''
-        return (0.2125 * array[:,:,0]) + (0.7154 * array[:,:,1]) + (0.0721 * array[:,:,2])
+
 
     print('making array')
     image = np.ones((y, x*2), dtype=np.float32)
