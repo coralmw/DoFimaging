@@ -1,0 +1,37 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{listings}
+\lstset{language=Python}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Light Field Photography on no Budget}
+\author{T GM Parks}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\begin{abstract}
+\end{abstract}
+
+\maketitle
+%\section{}
+%\subsection{}
+
+\section{Introduction}
+Light field photography involves using a spatially distributed array of cameras to capture a single scene in order to capture the color and direction of light t each pixel location. This can be used to provide higher quality imaging and novel post processing tools. Several high profile papers have been published from Stanford's research lab, and a spinoff company called Lytro has been formed selling consumer cameras based upon this technology.
+
+Even so, all existing light field cameras have been large and expensive. This paper covers the development of a Raspberry Pi based computational camera in order to bring Light Field imaging to a wider audience. 
+
+\section{hardware}
+
+In order to capture and process the image, a Rasberry Pi was wased due to its wide range of interfaces, aavailability of a camera and price. The raspberry Pi camera is a 5MP cellphone image sensor connectedd to the RPi via CSI. The camera is physically mounted to a linear driven servo controled platform, and powered by a EasyDriver board connected to the RPi to move the ccamera latrally.
+
+One effect of caturing the light feild is post-processing control of the focus point.
+
+
+\end{document}  
