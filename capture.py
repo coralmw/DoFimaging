@@ -49,15 +49,26 @@ if __name__ == '__main__':
 
 
 
-    print('making array')
-    image = np.ones((y, x*2), dtype=np.float32)
 
-    n = 10
+
+    n = 20
+    xmult = int(250/n)
+    xlen = x + xmult*n
     locs = []
-    for img in range(n):
-        print('capturing')
+    for img in range(n)[::-1]:
+        xstart = xlen - x # position of the first one
+        xstart += xmult*img
+        print(xstart)
+        locs.append(xstart)
+    print(xlen, xmult, x, n)
+
+    print('making array')
+    image = np.ones((y, xlen+1000), dtype=np.float32)
+    
+    for xoff in locs:
+        print('capturing at {}'.format(xoff))
         camera.capture(output, 'yuv')
-        xoff = img * int(300/n)
+        print('image at {}:{} into {}'.format(xoff,xoff+x, image[:,xoff:xoff+x].size))
         image[:,xoff:xoff+x] *= (output.array[:,:,0] / output.array[:,:,0].max()) 
         output.truncate(0)
         step(1, int(1700/n))
